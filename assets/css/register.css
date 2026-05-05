@@ -1,0 +1,248 @@
+:root {
+      --bg:        #0d0f14;
+      --panel:     #13161e;
+      --accent:    #c8a96e;
+      --accent2:   #e8c98a;
+      --border:    rgba(200,169,110,0.18);
+      --text:      #eae8e1;
+      --muted:     #7a7870;
+      --input-bg:  #1a1d27;
+      --radius:    12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+      background-image:
+        radial-gradient(ellipse 60% 50% at 80% 10%, rgba(200,169,110,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 10% 90%, rgba(200,169,110,0.05) 0%, transparent 70%);
+    }
+
+    .card-wrap {
+      width: 100%;
+      max-width: 900px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(200,169,110,0.06);
+    }
+
+    /* ── Left decorative banner ── */
+    .banner {
+      background: linear-gradient(155deg, #1a1610 0%, #0d0f14 60%);
+      border-right: 1px solid var(--border);
+      padding: 48px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(200,169,110,0.12) 0%, transparent 70%);
+    }
+    .banner-monogram {
+      font-family: 'Playfair Display', serif;
+      font-size: 96px;
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.12;
+      position: absolute;
+      bottom: -10px;
+      right: -12px;
+      pointer-events: none;
+      user-select: none;
+    }
+    .banner-tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .banner h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .banner p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      position: relative;
+    }
+    .divider-line {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      margin: 20px 0;
+      position: relative;
+    }
+
+    /* ── Form side ── */
+    .form-side {
+      padding: 48px 44px;
+    }
+
+    .form-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 7px;
+    }
+
+    .form-control, .form-select {
+      background: var(--input-bg) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: var(--radius) !important;
+      color: var(--text) !important;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      padding: 11px 14px;
+      transition: border-color .22s, box-shadow .22s;
+      height: auto;
+    }
+    .form-control::placeholder { color: #44464f; }
+    .form-control:focus, .form-select:focus {
+      border-color: rgba(200,169,110,0.6) !important;
+      box-shadow: 0 0 0 3px rgba(200,169,110,0.1) !important;
+      outline: none;
+    }
+    .form-select option { background: #1a1d27; color: var(--text); }
+
+    /* File upload */
+    .file-upload-wrap {
+      position: relative;
+    }
+    .file-upload-wrap input[type="file"] {
+      opacity: 0;
+      position: absolute;
+      inset: 0;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .file-upload-face {
+      background: var(--input-bg);
+      border: 1px dashed rgba(200,169,110,0.3);
+      border-radius: var(--radius);
+      padding: 18px 14px;
+      text-align: center;
+      transition: border-color .22s, background .22s;
+      cursor: pointer;
+    }
+    .file-upload-wrap:hover .file-upload-face {
+      border-color: var(--accent);
+      background: rgba(200,169,110,0.04);
+    }
+    .file-upload-face .icon { font-size: 22px; margin-bottom: 6px; }
+    .file-upload-face span {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .file-upload-face strong {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Password toggle */
+    .pw-wrap { position: relative; }
+    .pw-wrap .form-control { padding-right: 44px; }
+    .pw-toggle {
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 16px;
+      padding: 0;
+      line-height: 1;
+      transition: color .2s;
+    }
+    .pw-toggle:hover { color: var(--accent); }
+
+    /* Submit button */
+    .btn-register {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      color: #0d0f14;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--radius);
+      padding: 13px 28px;
+      width: 100%;
+      margin-top: 8px;
+      cursor: pointer;
+      transition: opacity .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 8px 24px rgba(200,169,110,0.25);
+    }
+    .btn-register:hover {
+      opacity: .92;
+      transform: translateY(-1px);
+      box-shadow: 0 12px 32px rgba(200,169,110,0.35);
+    }
+    .btn-register:active { transform: translateY(0); }
+
+    .login-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .login-link a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .login-link a:hover { text-decoration: underline; }
+
+    .form-section-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .form-section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .banner { padding: 36px 28px; border-right: none; border-bottom: 1px solid var(--border); }
+      .form-side { padding: 36px 24px; }
+      .banner h1 { font-size: 26px; }
+    }
