@@ -1,4 +1,5 @@
 <?php
+require('./adminauth.php');
 require('../db.php');
 
 

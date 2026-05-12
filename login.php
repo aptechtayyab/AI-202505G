@@ -12,14 +12,22 @@ if (isset($_POST["btnLogin"])) {
         if ($userEmail == $userData["userEmail"] && $passverify) {
             if ($userData["role_id_fk"] == 1) {
                 echo "<script>window.location.href = 'admin/index.php'</script>";
+                $_SESSION["image"] = $userData["userImage"];
+                $_SESSION["name"] = $userData["userName"];
                 $_SESSION["email"] = $userData["userEmail"];
                 $_SESSION["roleid"] = $userData["role_id_fk"];
             } else if ($userData["role_id_fk"] == 2) {
                 echo "<script>window.location.href = 'company/index.php'</script>";
+                $_SESSION["image"] = $userData["userImage"];
+
+                $_SESSION["name"] = $userData["userName"];
                 $_SESSION["email"] = $userData["userEmail"];
                 $_SESSION["roleid"] = $userData["role_id_fk"];
             } else if ($userData["role_id_fk"] == 3) {
                 echo "<script>window.location.href = 'index.php'</script>";
+                $_SESSION["image"] = $userData["userImage"];
+
+                $_SESSION["name"] = $userData["userName"];
                 $_SESSION["email"] = $userData["userEmail"];
                 $_SESSION["roleid"] = $userData["role_id_fk"];
             }

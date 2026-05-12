@@ -1,4 +1,5 @@
 <?php 
+include('./adminauth.php');
 include ('../db.php');
 $users = mysqli_query($con,"SELECT * FROM users INNER JOIN roles ON users.role_id_fk = roles.role_id");
 
